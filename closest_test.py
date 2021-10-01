@@ -34,3 +34,13 @@ class ClosestTest(unittest.TestCase):
         self.assertEqual(
             closest([4, 5, 28, 34, 47, 57, 61, 81, 85, 93], 61, 3), [47, 57, 81]
         )
+
+    def test_range(self):
+        self.assertEqual(
+            closest(list(range(1000_000)), 515, 3), [514, 515, 516]
+        )
+
+    def test_range_nonexistent(self):
+        self.assertEqual(
+            closest(list(range(0,1000_000,5)), 516, 4), [510, 515, 520, 525]
+        )
