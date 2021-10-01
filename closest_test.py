@@ -32,15 +32,19 @@ class ClosestTest(unittest.TestCase):
 
     def test_larger(self):
         self.assertEqual(
-            closest([4, 5, 28, 34, 47, 57, 61, 81, 85, 93], 61, 3), [47, 57, 81]
+            closest([4, 5, 28, 34, 47, 57, 61, 81, 85, 93], 61, 3), [47, 57, 61]
+        )
+
+    def test_larger2(self):
+        self.assertEqual(
+            closest([4, 5, 28, 34, 47, 57, 61, 81, 85, 93], 30, 7),
+            [4, 5, 28, 34, 47, 57, 61],
         )
 
     def test_range(self):
-        self.assertEqual(
-            closest(list(range(1000_000)), 515, 3), [514, 515, 516]
-        )
+        self.assertEqual(closest(range(1000_000_000), 515, 3), [514, 515, 516])
 
-    def test_range_nonexistent(self):
+    def test_range_nonexisting(self):
         self.assertEqual(
-            closest(list(range(0,1000_000,5)), 516, 4), [510, 515, 520, 525]
+            closest(list(range(0, 20_000_000, 5)), 516, 4), [510, 515, 520, 525]
         )
